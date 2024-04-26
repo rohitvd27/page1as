@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pizza Shop Login</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-image: url("https://img.freepik.com/free-vector/restaurant-mural-wallpaper_23-2148698592.jpg?w=826&t=st=1713501270~exp=1713501870~hmac=a4edaf76fc8a4b7b8cba6d8ddbecbcacce1c9c408b0e0c13c0cc4792f8dcae38"); /* Change 'background.jpg' to the path of your background image */
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        backdrop-filter: blur(20px);
+      }
+
+      header {
+        background-color: rgba(
+          51,
+          51,
+          51,
+          0.5
+        ); /* Semi-transparent black background for header */
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        z-index: 1; /* Ensure header appears above the blurred background */
+      }
+
+      footer {
+        background-color: rgba(
+          51,
+          51,
+          51,
+          0.5
+        ); /* Semi-transparent black background for footer */
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+
+      .container {
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.8
+        ); /* Semi-transparent white background for container */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        transition: opacity 0.5s ease;
+        opacity: 1;
+        z-index: 2; /* Ensure container appears above the blurred background */
+      }
+
+      .container.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      h1 {
+        text-align: center;
+        color: #ff5733;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      button {
+        background-color: #ff5733;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #e84525;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Pizza Shop</h1>
+    </header>
+
+    <div class="container">
+      <h2>Welcome to Our Pizza Shop</h2>
+      <form id="loginForm" onsubmit="return login()">
+        <input
+          type="text"
+          id="username"
+          placeholder="Username"
+          required
+        /><br />
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          required
+        /><br />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2024 Rohit Pizza Shop. All rights reserved.<br /><a
+          href="www.google.com"
+          style="color: #87ce91"
+          >Click here to report a bug</a
+        >
+      </p>
+    </footer>
+
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form submission from reloading the page
+
+          var username = document.getElementById("username").value;
+          var password = document.getElementById("password").value;
+
+          // Save the username and password locally
+          localStorage.setItem("username", username);
+          localStorage.setItem("password", password);
+
+          // Fade out the login container
+          document.querySelector(".container").classList.add("hidden");
+
+          // After a short delay, redirect to page2.html
+          setTimeout(function () {
+            window.location.href = "page2.html";
+          }, 500); // 0.5 seconds delay for the fade out transition
+        });
+    </script>
+  </body>
+</html>
